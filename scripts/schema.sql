@@ -129,8 +129,6 @@ CREATE TABLE dm_municipio (
     id_municipio       INTEGER NOT NULL,
     cd_municipio_ibge  INTEGER NOT NULL,
     nome               TEXT NOT NULL,
-    estado             TEXT,
-    pais               TEXT,
     primary key(id_municipio)
 );
 
@@ -229,6 +227,7 @@ CREATE TABLE dm_unidade_medida (
 
 CREATE TABLE dm_unidade_orc (
      id_unidade_orc INTEGER NOT NULL,
+     sqa_unidade_orcam INTEGER NOT NULL,
      ano_exercicio INTEGER NOT NULL,
      cd_unidade_orc INTEGER NOT NULL,
      id_grupo_administracao INTEGER NOT NULL,
@@ -258,7 +257,6 @@ CREATE TABLE ft_compras (
     id_situacao_cont     INTEGER NOT NULL,
     id_municipio         INTEGER NOT NULL,
     id_contratado        INTEGER NOT NULL,
-    id_tipo_licitacao    INTEGER NOT NULL,
     id_grupo_matserv     INTEGER NOT NULL,
     id_classe_matserv    INTEGER NOT NULL,
     id_material_servico  INTEGER NOT NULL,
