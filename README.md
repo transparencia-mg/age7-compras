@@ -1,6 +1,6 @@
 # Conjunto de dados - Compras
 
-Em virtude do tamanho (7.3G) do arquivo `dm_empenho_desp.csv`, para viabilizar a análise do conteúdos do conjunto de dados de compras foi necessário adotar uma estratégia de armazenamento dos dados em disco.
+Em virtude do tamanho (11911737 linhas; 28 colunas; 7.3GB) do arquivo `dm_empenho_desp.csv`, para viabilizar a análise do conteúdos do conjunto de dados de compras foi necessário adotar uma estratégia de armazenamento dos dados em disco.
 
 Esse projeto faz a carga dos dados de compras no sqlite, gerando a base `data/age7-compras.db`. 
 
@@ -34,6 +34,8 @@ Na linha de comando execute
 ```bash
 sqlite3 data/age7-compras.db < scripts/import.sql
 ```
+
+Em um macOS Catalina com processador 2,6 GHz Dual-Core Intel Core i5 e memória 8 GB 1600 MHz DDR3 a importação teve duração de 10 minutos.
 
 ## Problemas
 
