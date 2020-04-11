@@ -1,2 +1,7 @@
-data-raw/
-data/
+data-raw/*
+!data-raw/.gitkeep
+data/*
+!data/.gitkeep
+logs/*
+!logs/.gitkeep
+.Rproj.user
