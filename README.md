@@ -2,7 +2,16 @@
 
 Em virtude do tamanho (11911737 linhas; 28 colunas; 7.3GB) do arquivo `dm_empenho_desp.csv`, para viabilizar a análise do conteúdo do conjunto de dados de compras foi necessário adotar uma estratégia de análise que não fizesse armazenamento dos dados na memória RAM.
 
-As instruções abaixo possibilitam reproduzir a análise a partir dos dados extraídos pelo NUCC.
+Os arquivos finais que foram alterados em relação aos inicialmente disponibilizados foram:
+
+* `data/dm_empenho_desp/*`
+* `data/ft_compras/*`
+* `data/dm_processo.csv`
+
+As instruções abaixo possibilitam reproduzir a análise a partir dos dados extraídos pelo NUCC. Além das dependências usuais (ie. git bash e R), é necessário instalar
+
+* [csvkit](https://csvkit.readthedocs.io/en/latest/)
+* [csvfix](https://neilb.bitbucket.io/csvfix/)
 
 ## Extração
 
@@ -96,7 +105,7 @@ csvclean -d ';' -n data/dm_empenho_desp.csv
 
 __As correções ainda devem ser realizadas pelo NUCC para fins do novo CKAN. Em todas as linhas problemáticas as regras de aspas duplas não foram respeitadas.__
 
-## Divisão dos arquivos
+## Diminuição do arquivo `dm_empenho_desp`
 
 O processo acima corrigiu os arquivos, mas a análise do `dm_empenho_desp.csv` ainda é problemática devido ao seu tamanho.
 Nossa estratégia vai ser em dividir o arquivo por ano. 
@@ -116,4 +125,13 @@ Essa transformação foi implementada com R no script `scripts/semi-join.R` e po
 ```sh
 mkdir data/merged
 Rscript scripts/semi-join.R
+```
+
+## Divisão dos arquivos por ano
+
+Para facilitar a carga no CKAN, os dois maiores arquivos `dm_empenho_desp.csv` e `ft_compras.csv` foram divididos por ano.
+
+```sh
+mkdir data/dm_empenho_desp data/ft_compras
+Rscript scripts/split_csv.R
 ```
