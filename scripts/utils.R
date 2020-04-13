@@ -1,3 +1,13 @@
+split_csv <- function(path, split_at, stem) {
+  
+  output <- file.path("data", stem)
+  dt <- data.table::fread(path, sep = ";", dec = ",")
+  lst <- split(dt, f = dt[[split_at]])
+  files <- file.path(output, paste0(stem, names(lst), ".csv"))
+  purrr::walk2(lst, files, write.csv2, row.names = FALSE)
+  
+}
+
 remove_rows <- function(x) {
   
   schema <- c(    
